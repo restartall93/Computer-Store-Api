@@ -70,25 +70,25 @@ namespace Computer_Store_Api.Migrations
                             CPU = "Intel Core i5 11400H",
                             Description = "l",
                             Drive = "512GB SSD",
-                            Image = "/product/test.jpg",
-                            Monitor = "NVIDIA RTX3050Ti 4G",
+                            Image = "/product/imgHomepage/250-21734-laptop-gigabyte-gaming-g5-md-51s1123so.jpg",
+                            Monitor = "15.6 inch FHD 144Hz",
                             Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
                             Price = 0.0,
-                            RAM = "16gb",
+                            RAM = "16GB",
                             VGA = "NVIDIA RTX3050Ti 4G"
                         },
                         new
                         {
                             Id = 2,
-                            CPU = "Intel Core i5 11400H",
+                            CPU = "Core i5 11400H (2.6 Ghz Up to 4.4 Ghz, 12MB)",
                             Description = "l",
-                            Drive = "512GB SSD",
+                            Drive = "512GB SSD / có thể Nâng cấp 1 ổ Sata 2.5\"",
                             Image = "/product/test.jpg",
-                            Monitor = "NVIDIA RTX3050Ti 4G",
-                            Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
+                            Monitor = "15.6 Inch Full HD, 100% srgb",
+                            Name = "Laptop Gigabyte Gaming G5 GD 51S1123SO/51VN123SO (Intel Core i5-11400H/ 16Gb RAM/ 512Gb SSD/ 15.6\" FHD - 144Hz/RTX 3050 4Gb/ Win11/Black/ 2 Yrs)",
                             Price = 0.0,
-                            RAM = "16gb",
-                            VGA = "NVIDIA RTX3050Ti 4G"
+                            RAM = "16GB 3200Mhz, 2 Khe, up to 32GB",
+                            VGA = "NVIDIA GeForce RTX 3050 4GB GDDR6"
                         },
                         new
                         {
