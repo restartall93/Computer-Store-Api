@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace BaseApi.Repositories
 {
-    public class ProductRepository : BaseRepository<Product>
+    public class UserRepository : BaseRepository<User>
     {
-        public ProductRepository(ApiOption apiConfig, DatabaseContext databaseContext) : base(apiConfig, databaseContext)
+        public UserRepository(ApiOption apiConfig, DatabaseContext databaseContext) : base(apiConfig, databaseContext)
         {
         }
     }

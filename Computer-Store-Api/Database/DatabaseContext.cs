@@ -34,6 +34,7 @@ namespace Computer_Store_Api.Database
             base.OnModelCreating(modelBuilder);
 
             new ProductSeeder(modelBuilder).SeedData();
+            new UserSeeder(modelBuilder).SeedData();
         }
     }
 }

@@ -10,12 +10,12 @@ using Computer_Store_Api.Common;
 
 namespace BaseApi.Respositories
 {
-    public class BaseRespository<T> : IRespositoryBase<T> where T : class, new()
+    public class BaseRepository<T> : IRespositoryBase<T> where T : class, new()
     {
         protected DbSet<T> Model { get; set; }
         protected DatabaseContext DbContext { get; set; }
         protected ApiOption ApiConfig { get; set; }
-        public BaseRespository(ApiOption apiConfig, DatabaseContext databaseContext)
+        public BaseRepository(ApiOption apiConfig, DatabaseContext databaseContext)
         {
             DbContext = databaseContext;
             Model = databaseContext.Set<T>();
