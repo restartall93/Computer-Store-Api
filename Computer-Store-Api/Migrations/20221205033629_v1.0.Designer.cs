@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Computer_Store_Api.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221129042000_v1.0")]
+    [Migration("20221205033629_v1.0")]
     partial class v10
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,8 +72,8 @@ namespace Computer_Store_Api.Migrations
                             CPU = "Intel Core i5 11400H",
                             Description = "l",
                             Drive = "512GB SSD",
-                            Image = "/product/test.jpg",
-                            Monitor = "NVIDIA RTX3050Ti 4G",
+                            Image = "/product/imgHomepage/250-21734-laptop-gigabyte-gaming-g5-md-51s1123so.jpg",
+                            Monitor = "15.6 inch FHD 144Hz",
                             Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
                             Price = 0.0,
                             RAM = "16gb",
@@ -82,28 +82,41 @@ namespace Computer_Store_Api.Migrations
                         new
                         {
                             Id = 2,
-                            CPU = "Intel Core i5 11400H",
+                            CPU = "Core i5 11400H (2.6 Ghz Up to 4.4 Ghz, 12MB)",
                             Description = "l",
-                            Drive = "512GB SSD",
-                            Image = "/product/test.jpg",
-                            Monitor = "NVIDIA RTX3050Ti 4G",
-                            Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
+                            Drive = "512GB SSD / có thể Nâng cấp 1 ổ Sata 2.5'",
+                            Image = "/product/imgHomepage/250-21725-laptop-gigabyte-gaming-g5-md-51s1123so.jpg",
+                            Monitor = "15.6 Inch Full HD, 100% srgb",
+                            Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6' FHD/RTX3050Ti 4Gb/ Win11)",
                             Price = 0.0,
-                            RAM = "16gb",
-                            VGA = "NVIDIA RTX3050Ti 4G"
+                            RAM = "16GB 3200Mhz, 2 Khe, up to 32GB",
+                            VGA = "NVIDIA GeForce RTX 3050 4GB GDDR6"
                         },
                         new
                         {
                             Id = 3,
-                            CPU = "Intel Core i5 11400H",
+                            CPU = "AMD Ryzen™ 3-5300U (2.6GHz upto 3.8GHz, 4MB)",
                             Description = "l",
-                            Drive = "512GB SSD",
-                            Image = "/product/test.jpg",
-                            Monitor = "NVIDIA RTX3050Ti 4G",
-                            Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
+                            Drive = "256GB PCIe NVMe",
+                            Image = "/product/imgHomepage/250-21615-hp-14s.jpg",
+                            Monitor = "14 inch HD (1366 x 768), micro-edge, BrightView, 250 nits, 45% NTSC",
+                            Name = "Laptop HP 14s-fq1080AU 4K0Z7PA (Ryzen 3-5300U/ 4GB / 256GB SSD/ 14' HD/ AMD Radeon/ Win10/ Silver/ 1 Yr)",
                             Price = 0.0,
-                            RAM = "16gb",
-                            VGA = "NVIDIA RTX3050Ti 4G"
+                            RAM = "4GB (1x4GB) DDR4-3200Mhz (2 khe)",
+                            VGA = "Radeon Vega Graphics"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CPU = "Intel Core I3-1115G4",
+                            Description = "l",
+                            Drive = "256GB SSD",
+                            Image = "/product/imgHomepage/250-22706-msi-14.jpg",
+                            Monitor = "14 inch FHD 60 Hz",
+                            Name = "Laptop MSI Modern 14 B11MOU-1027VN (I3-1115G4/ 8GB RAM / 256GB SSD/ 14' FHD, 60Hz/ VGA ON/ Win11/ Grey/ 1 Yr)",
+                            Price = 0.0,
+                            RAM = "8GB",
+                            VGA = "Intel UHD Graphics"
                         });
                 });
 #pragma warning restore 612, 618

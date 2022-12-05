@@ -45,17 +45,13 @@ namespace Computer_Store_Api.Migrations
             migrationBuilder.InsertData(
                 table: "products",
                 columns: new[] { "Id", "CPU", "Description", "Drive", "Image", "Monitor", "Name", "Price", "RAM", "VGA" },
-                values: new object[] { 1, "Intel Core i5 11400H", "l", "512GB SSD", "/product/test.jpg", "NVIDIA RTX3050Ti 4G", "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)", 0.0, "16gb", "NVIDIA RTX3050Ti 4G" });
-
-            migrationBuilder.InsertData(
-                table: "products",
-                columns: new[] { "Id", "CPU", "Description", "Drive", "Image", "Monitor", "Name", "Price", "RAM", "VGA" },
-                values: new object[] { 2, "Intel Core i5 11400H", "l", "512GB SSD", "/product/test.jpg", "NVIDIA RTX3050Ti 4G", "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)", 0.0, "16gb", "NVIDIA RTX3050Ti 4G" });
-
-            migrationBuilder.InsertData(
-                table: "products",
-                columns: new[] { "Id", "CPU", "Description", "Drive", "Image", "Monitor", "Name", "Price", "RAM", "VGA" },
-                values: new object[] { 3, "Intel Core i5 11400H", "l", "512GB SSD", "/product/test.jpg", "NVIDIA RTX3050Ti 4G", "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)", 0.0, "16gb", "NVIDIA RTX3050Ti 4G" });
+                values: new object[,]
+                {
+                    { 1, "Intel Core i5 11400H", "l", "512GB SSD", "/product/imgHomepage/250-21734-laptop-gigabyte-gaming-g5-md-51s1123so.jpg", "15.6 inch FHD 144Hz", "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)", 0.0, "16gb", "NVIDIA RTX3050Ti 4G" },
+                    { 2, "Core i5 11400H (2.6 Ghz Up to 4.4 Ghz, 12MB)", "l", "512GB SSD / có thể Nâng cấp 1 ổ Sata 2.5'", "/product/imgHomepage/250-21725-laptop-gigabyte-gaming-g5-md-51s1123so.jpg", "15.6 Inch Full HD, 100% srgb", "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6' FHD/RTX3050Ti 4Gb/ Win11)", 0.0, "16GB 3200Mhz, 2 Khe, up to 32GB", "NVIDIA GeForce RTX 3050 4GB GDDR6" },
+                    { 3, "AMD Ryzen™ 3-5300U (2.6GHz upto 3.8GHz, 4MB)", "l", "256GB PCIe NVMe", "/product/imgHomepage/250-21615-hp-14s.jpg", "14 inch HD (1366 x 768), micro-edge, BrightView, 250 nits, 45% NTSC", "Laptop HP 14s-fq1080AU 4K0Z7PA (Ryzen 3-5300U/ 4GB / 256GB SSD/ 14' HD/ AMD Radeon/ Win10/ Silver/ 1 Yr)", 0.0, "4GB (1x4GB) DDR4-3200Mhz (2 khe)", "Radeon Vega Graphics" },
+                    { 4, "Intel Core I3-1115G4", "l", "256GB SSD", "/product/imgHomepage/250-22706-msi-14.jpg", "14 inch FHD 60 Hz", "Laptop MSI Modern 14 B11MOU-1027VN (I3-1115G4/ 8GB RAM / 256GB SSD/ 14' FHD, 60Hz/ VGA ON/ Win11/ Grey/ 1 Yr)", 0.0, "8GB", "Intel UHD Graphics" }
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

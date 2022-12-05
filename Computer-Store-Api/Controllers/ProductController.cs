@@ -6,6 +6,7 @@ using Computer_Store_Api.Database;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using NetTopologySuite.Operation.Valid;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -34,6 +35,24 @@ namespace BaseApi.Controllers
             try
             {
                 return _productRepository.FindAll().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// Get achievement list of user
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetDetail")]
+        public object GetDetail(int id)
+        {
+            try
+            {
+                return _productRepository.FindAll().Where(row=> row.Id ==id).FirstOrDefault();
             }
             catch (Exception ex)
             {
