@@ -3,6 +3,7 @@ using AutoMapper.Configuration;
 using BaseApi.Repositories;
 using Computer_Store_Api.Common;
 using Computer_Store_Api.Database;
+using Computer_Store_Api.Models;
 using Computer_Store_Api.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +50,48 @@ namespace BaseApi.Controllers
                     resultLogin = true,
                     userInfor = user,
                     description = "Dung"
+                };
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        [Route("UserRegister")]
+        public object UserRegister(UserRegisterRequest userRegisterRequest)
+        {
+            try
+            {
+                var userCheck = _userRepository.FindAll().Where(row => row.UserName == userRegisterRequest.Email).FirstOrDefault();
+                if(userCheck != null)
+                {
+                    return new
+                    {
+                        resultRegister = false,
+                        userInfor = userCheck,
+                        description = "Email da ton tai"
+                    };
+                }
+
+                var user = new User()
+                {
+                    Id = 0,
+                    Name = userRegisterRequest.Name,
+                    PhoneNumber = userRegisterRequest.PhoneNumber,
+                    PassWord = userRegisterRequest.PassWord,
+                    Address = "HN",
+                    UserName = userRegisterRequest.Email,
+                };
+                _userRepository.Create(user);
+                _userRepository.SaveChange();
+
+                return new
+                {
+                    resultRegister = true,
+                    userInfor = user,
+                    description = "Dang ky thanh cong"
                 };
             }
             catch (Exception ex)
