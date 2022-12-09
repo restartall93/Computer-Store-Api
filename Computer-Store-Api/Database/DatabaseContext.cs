@@ -22,7 +22,7 @@ namespace Computer_Store_Api.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var sqlConnection = "Server=localhost;Port=3306;Database=computer_store;Uid=root;Pwd=;MaximumPoolSize=500;";
+                var sqlConnection = "Server=localhost;Port=3306;Database=computer_store;Uid=root;Pwd=habin2001;MaximumPoolSize=500;";
                 optionsBuilder.UseMySql(sqlConnection,
                     MySqlServerVersion.LatestSupportedServerVersion);
             }
