@@ -1,5 +1,7 @@
+using AutoMapper;
 using Computer_Store_Api.Common;
 using Computer_Store_Api.Database;
+using Computer_Store_Api.Mapper;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
@@ -23,7 +25,6 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseMySql(apiOption.linkDB, MySqlServerVersion.LatestSupportedServerVersion));
 
 // cors
-
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
@@ -31,6 +32,16 @@ builder.Services.AddCors(options =>
         builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+
+// Auto Mapper Configurations
+var mapperConfig = new MapperConfiguration(mapperConfig =>
+{
+    mapperConfig.AddProfile(new MappingContext());
+});
+
+IMapper mapper = mapperConfig.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

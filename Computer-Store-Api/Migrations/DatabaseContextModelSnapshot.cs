@@ -18,6 +18,57 @@ namespace Computer_Store_Api.Migrations
                 .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Computer_Store_Api.Models.Cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("carts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Quantity = 0,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Quantity = 0,
+                            UserId = 2
+                        });
+                });
+
+            modelBuilder.Entity("Computer_Store_Api.Models.CartDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("cart_details");
+                });
+
             modelBuilder.Entity("Computer_Store_Api.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -146,7 +197,7 @@ namespace Computer_Store_Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("users");
 
                     b.HasData(
                         new
