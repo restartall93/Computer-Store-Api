@@ -43,13 +43,13 @@ namespace BaseApi.Controllers
                     {
                         resultLogin = false,
                         userInfor = user,
-                        description = "Sai"
+                        description = "Sai tài khoản hoặc mật khẩu!"
                     };
                 }
                 return new {
                     resultLogin = true,
                     userInfor = user,
-                    description = "Dung"
+                    description = "Đăng nhập thành công!"
                 };
             }
             catch (Exception ex)
