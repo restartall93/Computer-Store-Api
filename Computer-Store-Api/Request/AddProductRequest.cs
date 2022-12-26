@@ -1,13 +1,10 @@
-﻿namespace Computer_Store_Api.Models
+﻿namespace Computer_Store_Api.Request
 {
-    public class Product : BaseEntity
+    public class AddProductRequest
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public double Price { get; set; }
         public string Image { get; set; }
-        public string Category { get; set; }
-        public string ProductType { get; set; }
         public string Description { get; set; }
         public string CPU { get; set; }
         public string RAM { get; set; }

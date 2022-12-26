@@ -12,6 +12,9 @@ namespace Computer_Store_Api.Mapper
         {
             // Cart detail
             CreateMap<CartDetail, CartDetailDto>();
+
+            //product
+            CreateMap<AddProductRequest, Product>();
         }
     }
 }
