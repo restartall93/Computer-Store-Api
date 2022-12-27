@@ -26,6 +26,14 @@ namespace Computer_Store_Api.Database
         public DbSet<CartDetail> cart_details { get; set; }
         #endregion
 
+        #region Order
+        public DbSet<Order> order { get; set; }
+        #endregion
+
+        #region CartDetail
+        public DbSet<OrderDetail> order_details { get; set; }
+        #endregion
+
         public static void UpdateDatabase(DatabaseContext context)
         {
             context.Database.Migrate();
