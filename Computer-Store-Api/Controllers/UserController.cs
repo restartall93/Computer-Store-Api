@@ -99,5 +99,19 @@ namespace BaseApi.Controllers
                 throw ex;
             }
         }
+        [HttpGet]
+        [Route("GetUsers")]
+        public object GetUsers()
+        {
+            try
+            {
+                return _userRepository.FindAll().ToList();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
