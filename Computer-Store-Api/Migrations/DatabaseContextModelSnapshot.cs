@@ -18,6 +18,43 @@ namespace Computer_Store_Api.Migrations
                 .HasAnnotation("ProductVersion", "6.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Computer_Store_Api.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("PassWord")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("admins");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin@gmail.com",
+                            Name = "Admin",
+                            PassWord = "admin",
+                            UserName = "admin@gmail.com"
+                        });
+                });
+
             modelBuilder.Entity("Computer_Store_Api.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
@@ -164,14 +201,14 @@ namespace Computer_Store_Api.Migrations
                         {
                             Id = 1,
                             CPU = "Intel Core i5 11400H",
-                            Category = "Lap-top",
+                            Category = "Computer",
                             Description = "l",
                             Drive = "512GB SSD",
                             Image = "/product/imgHomepage/250-21734-laptop-gigabyte-gaming-g5-md-51s1123so.jpg",
                             Monitor = "15.6 inch FHD 144Hz",
                             Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6\" FHD/RTX3050Ti 4Gb/ Win11)",
                             Price = 0.0,
-                            ProductType = "Computer",
+                            ProductType = "Lap-top",
                             RAM = "16gb",
                             VGA = "NVIDIA RTX3050Ti 4G"
                         },
@@ -179,14 +216,14 @@ namespace Computer_Store_Api.Migrations
                         {
                             Id = 2,
                             CPU = "Core i5 11400H (2.6 Ghz Up to 4.4 Ghz, 12MB)",
-                            Category = "Lap-top",
+                            Category = "Computer",
                             Description = "l",
                             Drive = "512GB SSD / có thể Nâng cấp 1 ổ Sata 2.5'",
                             Image = "/product/imgHomepage/250-21725-laptop-gigabyte-gaming-g5-md-51s1123so.jpg",
                             Monitor = "15.6 Inch Full HD, 100% srgb",
                             Name = "Laptop Gigabyte Gaming G5 MD 51S1123SO ( i5-11400H/ 16GB/ 512GB SSD/ 15.6' FHD/RTX3050Ti 4Gb/ Win11)",
                             Price = 0.0,
-                            ProductType = "Computer",
+                            ProductType = "Lap-top",
                             RAM = "16GB 3200Mhz, 2 Khe, up to 32GB",
                             VGA = "NVIDIA GeForce RTX 3050 4GB GDDR6"
                         },
@@ -194,14 +231,14 @@ namespace Computer_Store_Api.Migrations
                         {
                             Id = 3,
                             CPU = "AMD Ryzen™ 3-5300U (2.6GHz upto 3.8GHz, 4MB)",
-                            Category = "Lap-top",
+                            Category = "Computer",
                             Description = "l",
                             Drive = "256GB PCIe NVMe",
                             Image = "/product/imgHomepage/250-21615-hp-14s.jpg",
                             Monitor = "14 inch HD (1366 x 768), micro-edge, BrightView, 250 nits, 45% NTSC",
                             Name = "Laptop HP 14s-fq1080AU 4K0Z7PA (Ryzen 3-5300U/ 4GB / 256GB SSD/ 14' HD/ AMD Radeon/ Win10/ Silver/ 1 Yr)",
                             Price = 0.0,
-                            ProductType = "Computer",
+                            ProductType = "Lap-top",
                             RAM = "4GB (1x4GB) DDR4-3200Mhz (2 khe)",
                             VGA = "Radeon Vega Graphics"
                         },
@@ -209,14 +246,14 @@ namespace Computer_Store_Api.Migrations
                         {
                             Id = 4,
                             CPU = "Intel Core I3-1115G4",
-                            Category = "Lap-top",
+                            Category = "Computer",
                             Description = "l",
                             Drive = "256GB SSD",
                             Image = "/product/imgHomepage/250-22706-msi-14.jpg",
                             Monitor = "14 inch FHD 60 Hz",
                             Name = "Laptop MSI Modern 14 B11MOU-1027VN (I3-1115G4/ 8GB RAM / 256GB SSD/ 14' FHD, 60Hz/ VGA ON/ Win11/ Grey/ 1 Yr)",
                             Price = 0.0,
-                            ProductType = "Computer",
+                            ProductType = "Lap-top",
                             RAM = "8GB",
                             VGA = "Intel UHD Graphics"
                         },

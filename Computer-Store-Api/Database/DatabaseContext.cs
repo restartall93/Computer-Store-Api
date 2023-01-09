@@ -34,6 +34,10 @@ namespace Computer_Store_Api.Database
         public DbSet<OrderDetail> order_details { get; set; }
         #endregion
 
+        #region Admin
+        public DbSet<Admin> admins { get; set; }
+        #endregion
+
         public static void UpdateDatabase(DatabaseContext context)
         {
             context.Database.Migrate();
@@ -57,6 +61,7 @@ namespace Computer_Store_Api.Database
             new ProductSeeder(modelBuilder).SeedData();
             new UserSeeder(modelBuilder).SeedData();
             new CartSeeder(modelBuilder).SeedData();
+            new AdminSeeder(modelBuilder).SeedData();
         }
     }
 }

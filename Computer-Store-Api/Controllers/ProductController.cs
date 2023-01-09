@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration;
 using BaseApi.Repositories;
 using Computer_Store_Api.Common;
 using Computer_Store_Api.Database;
@@ -7,11 +6,7 @@ using Computer_Store_Api.Models;
 using Computer_Store_Api.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
-using NetTopologySuite.Operation.Valid;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
+using System.IO;
 
 namespace BaseApi.Controllers
 {
@@ -21,10 +16,12 @@ namespace BaseApi.Controllers
     public class ProductController : ControllerBase
     {
         ProductRepository _productRepository;
+        IWebHostEnvironment _webHost;
         IMapper _mapper;
-        public ProductController(DatabaseContext databaseContext, ApiOption apiConfig, IMapper mapper)
+        public ProductController(DatabaseContext databaseContext, ApiOption apiConfig, IMapper mapper, IWebHostEnvironment webHost)
         {
             _productRepository = new ProductRepository( apiConfig, databaseContext);
+            _webHost = webHost;
             _mapper = mapper;
         }
 
@@ -99,14 +96,61 @@ namespace BaseApi.Controllers
             try
             {
                 var product = _mapper.Map<Product>(addProductRequest);
-                _productRepository.Create(product);
-                _productRepository.SaveChange();
-                return product;
+                if(product != null)
+                {
+                    product.Image = "/product/" + product.Image;
+                    _productRepository.Create(product);
+                    _productRepository.SaveChange();
+                    return product;
+                }
+                return null;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// post image
+        /// </summary>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("PostImage")]
+        public object PostImage(IFormFile image)
+        {
+            try
+            {
+                if (image == null)
+                {
+                    return new
+                    {
+                        result = false
+                    };
+                }
+
+                using (FileStream fileStream = System.IO.File.Create(_webHost.WebRootPath + "\\product\\" + image.FileName))
+                {
+                    image.CopyTo(fileStream);
+                    fileStream.Flush();
+                    return new
+                    {
+                        result = true
+                    };
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    result = false
+                };
+            }
+        }
+
     }
 }
