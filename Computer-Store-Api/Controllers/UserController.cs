@@ -99,14 +99,34 @@ namespace BaseApi.Controllers
                 throw ex;
             }
         }
+
+
         [HttpGet]
         [Route("GetUsers")]
-        public object GetUsers()
+        public object GetUsers(int limit, int page)
         {
             try
             {
-                return _userRepository.FindAll().ToList();
+                var query = _userRepository.FindAll();
+                query = query.Skip((page - 1) * limit).Take(limit);
 
+                var total = _userRepository.FindAll().Count();
+                var totalPage = 0;
+                if ((double)total / limit > (int)((double)total / limit))
+                {
+                    totalPage = total / limit + 1;
+                }
+                else
+                {
+                    totalPage = total / limit;
+                }
+
+                return new
+                {
+                    total = total,
+                    totalPage = totalPage,
+                    userList = query.ToList(),
+                };
             }
             catch (Exception ex)
             {
