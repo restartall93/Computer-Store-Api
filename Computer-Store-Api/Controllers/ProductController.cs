@@ -31,11 +31,30 @@ namespace BaseApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetProducts")]
-        public object GetProducts()
+        public object GetProducts(int limit, int page)
         {
             try
             {
-                return _productRepository.FindAll().ToList();
+                var query = _productRepository.FindAll();
+                query = query.Skip((page - 1) * limit).Take(limit);
+
+                var total = _productRepository.FindAll().Count();
+                var totalPage = 0;
+                if ((double)total / limit > (int)((double)total / limit))
+                {
+                    totalPage = total / limit + 1;
+                }
+                else
+                {
+                    totalPage = total / limit;
+                }
+
+                return new
+                {
+                    total = total,
+                    totalPage = totalPage,
+                    productList = query.ToList(),
+                };
             }
             catch (Exception ex)
             {
