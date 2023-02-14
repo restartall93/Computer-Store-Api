@@ -141,7 +141,7 @@ namespace BaseApi.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("OrderProduct")]
-        public object OrderProduct(int UserId)
+        public object OrderProduct(int UserId, string address, string name, string phoneNumber)
         {
             try
             {
@@ -161,6 +161,9 @@ namespace BaseApi.Controllers
                         Id = 0,
                         UserId = UserId,
                         Quantity = cartDetailList.Count,
+                        Address = address,
+                        Name = name,
+                        PhoneNumber = phoneNumber
                     };
                     _orderRepository.Create(oder);
                     _orderRepository.SaveChange();

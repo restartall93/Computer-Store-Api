@@ -31,11 +31,17 @@ namespace BaseApi.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("GetProducts")]
-        public object GetProducts(int limit, int page)
+        public object GetProducts(int limit, int page, string? name)
         {
             try
             {
                 var query = _productRepository.FindAll();
+
+                if(!string.IsNullOrEmpty(name))
+                {
+                    query = query.Where(row => row.Name.Contains(name));
+                }
+
                 query = query.Skip((page - 1) * limit).Take(limit);
 
                 var total = _productRepository.FindAll().Count();

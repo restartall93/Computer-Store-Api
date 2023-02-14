@@ -15,6 +15,8 @@ namespace Computer_Store_Api.Mapper
 
             //product
             CreateMap<AddProductRequest, Product>();
+            //product
+            CreateMap<Order, OrderDto>();
         }
     }
 }

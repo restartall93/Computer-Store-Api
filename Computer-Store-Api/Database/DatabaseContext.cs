@@ -58,9 +58,9 @@ namespace Computer_Store_Api.Database
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
             base.OnModelCreating(modelBuilder);
 
-            new ProductSeeder(modelBuilder).SeedData();
+            //new ProductSeeder(modelBuilder).SeedData();
             new UserSeeder(modelBuilder).SeedData();
-            new CartSeeder(modelBuilder).SeedData();
+            //new CartSeeder(modelBuilder).SeedData();
             new AdminSeeder(modelBuilder).SeedData();
         }
     }

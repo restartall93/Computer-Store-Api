@@ -3,6 +3,7 @@ using AutoMapper.Configuration;
 using BaseApi.Repositories;
 using Computer_Store_Api.Common;
 using Computer_Store_Api.Database;
+using Computer_Store_Api.Dto;
 using Computer_Store_Api.Models;
 using Computer_Store_Api.Request;
 using Microsoft.AspNetCore.Authorization;
@@ -23,12 +24,17 @@ namespace BaseApi.Controllers
     {
         UserRepository _userRepository;
         ProductRepository _productRepository;
+        OrderDetailRepository _orderDetailRepository;
         OrderRepository _orderRepository;
-        public OrderController(DatabaseContext databaseContext, ApiOption apiConfig)
+        IMapper _mapper;
+
+        public OrderController(DatabaseContext databaseContext, ApiOption apiConfig, IMapper mapper)
         {
             _userRepository = new UserRepository( apiConfig, databaseContext);
             _productRepository = new ProductRepository( apiConfig, databaseContext);
             _orderRepository = new OrderRepository( apiConfig, databaseContext);
+            _orderDetailRepository = new OrderDetailRepository( apiConfig, databaseContext);
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -54,12 +60,26 @@ namespace BaseApi.Controllers
                 {
                     totalPage = total / limit;
                 }
+                var orderList = query.ToList();
+                var orderDtoList = orderList.Select(row => _mapper.Map<OrderDto>(row)).ToList();
+                foreach (var orderDto in orderDtoList)
+                {
 
+                    var orderDetailListByOrder = _orderDetailRepository.FindAll().Where(row => row.OrderId == orderDto.Id).ToList();
+                    foreach(var orderDetail in orderDetailListByOrder)
+                    {
+                        var product = _productRepository.FindOrFail(orderDetail.ProductId);
+                        if(product!= null)
+                        {
+                            orderDto.TotalPrice += product.Price * orderDetail.Quantity;
+                        }
+                    }
+                }
                 return new
                 {
                     total = total,
                     totalPage = totalPage,
-                    orderList = query.ToList(),
+                    orderList = orderDtoList,
                 };
             }
             catch (Exception ex)

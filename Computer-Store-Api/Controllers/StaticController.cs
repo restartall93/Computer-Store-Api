@@ -23,11 +23,13 @@ namespace BaseApi.Controllers
         UserRepository _userRepository;
         ProductRepository _productRepository;
         OrderRepository _orderRepository;
+        OrderDetailRepository _orderDetailRepository;
         public StaticController(DatabaseContext databaseContext, ApiOption apiConfig)
         {
             _userRepository = new UserRepository( apiConfig, databaseContext);
             _productRepository = new ProductRepository( apiConfig, databaseContext);
             _orderRepository = new OrderRepository( apiConfig, databaseContext);
+            _orderDetailRepository = new OrderDetailRepository( apiConfig, databaseContext);
         }
 
         /// <summary>
@@ -43,11 +45,14 @@ namespace BaseApi.Controllers
                 var totalUser = _userRepository.FindAll().Count();
                 var totalOrder = _orderRepository.FindAll().Count();
                 var totalProduct = _productRepository.FindAll().Count();
+                var totalProductSold = _orderDetailRepository.FindAll().Sum(row => row.Quantity);
+
                 return new
                 {
                     totalUser = totalUser,
                     totalOrder = totalOrder,
                     totalProduct = totalProduct,
+                    totalProductSold = totalProductSold
                 };
             }
             catch (Exception ex)
