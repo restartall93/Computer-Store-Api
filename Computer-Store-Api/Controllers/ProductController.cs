@@ -106,7 +106,11 @@ namespace BaseApi.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return new
+                {
+                    code = "error",
+                    des = ex.Message
+                };
             }
         }
 
@@ -132,7 +136,51 @@ namespace BaseApi.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                return new
+                {
+                    code = "error",
+                    des = ex.Message
+                };
+            }
+        }
+
+        /// <summary>
+        /// Update Product
+        /// </summary>
+        /// <param name="addProductRequest"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("UpdateProduct")]
+        public object UpdateProduct(int id, AddProductRequest addProductRequest)
+        {
+            try
+            {
+                var product = _productRepository.FindOrFail(id);
+                if(product == null)
+                {
+                    throw new Exception("product does not exist!");
+                }
+                product.Name = addProductRequest.Name;
+                product.Price = addProductRequest.Price;
+                product.Category = addProductRequest.Category;
+                product.ProductType = addProductRequest.ProductType;
+                product.Description = addProductRequest.Description;
+                product.CPU = addProductRequest.CPU;
+                product.RAM = addProductRequest.RAM;
+                product.Drive = addProductRequest.Drive;
+                product.VGA = addProductRequest.VGA;
+                product.Monitor = addProductRequest.Monitor;
+                _productRepository.UpdateByEntity(product);
+                _productRepository.SaveChange();
+                return product;
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    code = "error",
+                    des = ex.Message
+                };
             }
         }
 

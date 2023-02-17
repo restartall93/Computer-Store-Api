@@ -47,12 +47,26 @@ namespace BaseApi.Controllers
                 var totalProduct = _productRepository.FindAll().Count();
                 var totalProductSold = _orderDetailRepository.FindAll().Sum(row => row.Quantity);
 
+                var toDay = DateTime.Now;
+                var numberOrderDetail = new List<int>();
+                for (int i = 7; i >= 1; i--)
+                {
+                    var date = toDay.AddDays(-i);
+                    var start = new DateTime(date.Year, date.Month, date.Day);
+                    var finish = start.AddDays(1);
+                    var orderList = _orderRepository.FindByCondition(row => row.CreatedDate >= start && row.CreatedDate <= finish).ToList();
+                    var orderIdList = orderList.Select(row => row.Id).ToList();
+                    var number = _orderDetailRepository.FindByCondition(row => orderIdList.Contains(row.OrderId)).Sum(row => row.Quantity);
+                    numberOrderDetail.Add(number);
+                }
+
                 return new
                 {
                     totalUser = totalUser,
                     totalOrder = totalOrder,
                     totalProduct = totalProduct,
-                    totalProductSold = totalProductSold
+                    totalProductSold = totalProductSold,
+                    numberOrderDetail = numberOrderDetail,
                 };
             }
             catch (Exception ex)
