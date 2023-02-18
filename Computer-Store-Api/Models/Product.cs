@@ -14,5 +14,8 @@
         public string Drive { get; set; }
         public string VGA { get; set; }
         public string Monitor { get; set; }
+        public string Details { get; set; }
+
+
     }
 }

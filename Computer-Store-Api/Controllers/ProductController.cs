@@ -114,6 +114,33 @@ namespace BaseApi.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("DeleteProduct")]
+        public object DeleteProduct(int id)
+        {
+            try
+            {
+                var product = _productRepository.FindOrFail(id);
+                if(product == null)
+                {
+                    throw new Exception("Product dose not exist!");
+                }
+
+                _productRepository.DeleteByEntity(product);
+                _productRepository.SaveChange();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return new
+                {
+                    code = "error",
+                    des = ex.Message
+                };
+            }
+        }
+
+
         /// <summary>
         /// Get achievement list of user
         /// </summary>
